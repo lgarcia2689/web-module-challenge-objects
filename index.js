@@ -15,8 +15,12 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
-function createMenuItem(/*Your code here*/){
-    /*Your code here*/
+function createMenuItem(param1,param2,param3){
+  return {
+    name:param1,
+    price:param2,
+    category:param3
+  };
 }
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 1b: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
@@ -28,9 +32,16 @@ Test your createMenuItems function by doing the following:
   
   For example: createMenuItem("pizza",5,"lunch") would return this as the object: {name:"Pizza",price:5,category:"lunch"}
 */
+// function createMenuItem(name, price, category){
+
+const item1= createMenuItem("pizza", 5, "lunch");
+const item2= createMenuItem("pancakes", 6, "breakfast");
+const item3= createMenuItem("hotdog", 4, "lunch");
+
+console.log(item1,item2,item3)
 
 
-
+// }
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 2: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 You're having a lunch special! 25% off for teachers and students, 10% off for everyone else. Add a method to the 
 burger object below that automatically calculates price depending on the a string received as a parameter. 
@@ -49,6 +60,17 @@ export const burger = {
   price: 18, 
   category: "Lunch", 
   /*Your code here*/
+  discount: function (title) {
+    if(title === "teacher" || title === "student"){
+      return this.price*.75;
+    }
+    else if(title === "public"){
+      return this.price*.9;
+    }
+    else{
+      return "select new category";
+    }
+  }
 }
 
 
@@ -69,7 +91,14 @@ const reviews = [
 Using the reviews array above:
   1. log only Julius' feedback to the console - no function needed 
 */
+ const review = [];
 
+ for(let i = 0; i < reviews.length; i++){
+   if(reviews[i].name.includes('Julius')){
+     review.push(reviews[i].feedback);
+   }
+ }
+ console.log(reviews[5].feedback) //will also work
 
 
 
@@ -78,7 +107,8 @@ Using the reviews array above do the following: (no function needed)
   1. Following the same format (name, rating, feedback), add a new fictitious review object to the reviews array
   2. log the whole array to the console, make sure the new review is inside of it   
 */
-
+reviews.push({name:"Luis",rating:5,feedback:"I like it"});
+console.log(reviews);
 
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 
@@ -88,6 +118,8 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
 */
 
 
+reviews[7].feedback="this place is chill with really cool people, great for getting work done on weekdays";
+console.log(reviews[7]);
 
 
 
@@ -102,10 +134,10 @@ Use the getReviewByIndex function below to do the following:
 */
 
 
-function getReviewByIndex(/*Your code here*/) {
-  /*Your code here*/
+function getReviewByIndex(array, index) {
+  const newArray = array[index];
+  return `${newArray["name"]} gave the restaurant a ${newArray["rating"]} star review, and their feedback was: ${newArray["feedback"]}`;
 }
-
 
   
 
@@ -120,11 +152,12 @@ Use the getLastReview function below to do the following:
   For example: getLastReview(reviews) would return: "Reyna gave the restaurant a 3.5 star review, and their feedback was: this place is chill with really cool people, great for getting work done on weekdays".
 */
 
+function getLastReview(array) {
+  const newArray=array[array.length-1];
+  console.log("testing", newArray)
+  return `${newArray["name"]} gave the restaurant a ${newArray["rating"]} star review, and their feedback was: ${newArray["feedback"]}`;
 
-function getLastReview(/*Your code here*/) {
-  /*Your code here*/
-} 
-
+ }
 
 
 ///////////////🍔☕️🍽 STRETCH🍔☕️🍽////////////////////
@@ -143,7 +176,7 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
+ function getReviewByRating() {
     /* code here */
   }
 
